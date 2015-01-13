@@ -19,5 +19,5 @@
 #
 ##############################################################################
 
-import account
+
 import supplier_invoices_security.xml
