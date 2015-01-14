@@ -8,7 +8,7 @@
         <record model="ir.rule" id="supplier_invoices_purchase_managers_rule">
             <field name="name">Invoices: purchase manager: access to supplier invoices</field>
             <field name="model_id" ref="account.invoice"/>
-            <field name="domain_force">[('user_id', '=', user.id)]</field>
+        <!--    <field name="domain_force">[('user_id', '=', user.id)]</field>   -->
             <field name="groups" eval="[(4,ref('purchase.group_purchase_manager'))]"/>
             <field name="perm_read" eval="True"/>
             <field name="perm_create" eval="True"/>
@@ -21,7 +21,7 @@
         <record model="ir.rule" id="supplier_invoices_purchase_users_rule">
             <field name="name">Invoices: purchase user: no access to supplier invoices</field>
 	    <field name="model_id" ref="account.invoice"/>
-	    <field name="domain_force">[('user_id', '=', user.id)]</field>
+	    <!--    <field name="domain_force">[('user_id', '=', user.id)]</field>   -->
             <field name="groups" eval="[(3,ref('purchase.group_purchase_user'))]"/>
             <field name="perm_read" eval="False"/>
             <field name="perm_create" eval="False"/>
