@@ -3,20 +3,6 @@
 
 <data noupdate="1">
 
-        <!-- Try if global cannot view supplier invoices -->
-        <record model="ir.rule" id="supplier_invoices_global_rule">
-            <field name="name">Invoices: all people cannot access to supplier invoices</field>
-            <field name="model_id" ref="account.model_account_invoice"/>
-			<field name="global" eval="True" />
-            <field name="domain_force">[('user_id', '=', user.id)]</field> 
-            <field name="perm_read" eval="False"/>
-            <field name="perm_create" eval="False"/>
-            <field name="perm_write" eval="False"/>
-            <field name="perm_unlink" eval="False"/>
-        </record>
-
-
-
 
         <!-- Purchase Managers: can view supplier invoices -->
         <record model="ir.rule" id="supplier_invoices_purchase_managers_rule">
@@ -31,14 +17,15 @@
         </record>
 
 
-        <!-- Purchase Users: cannot view supplier invoices (failure)
+        <!-- Purchase Users: cannot view supplier invoices -->
         <record model="ir.rule" id="supplier_invoices_purchase_users_rule">
-            <field name="name">Invoices: purchase user: no access to supplier invoices</field>
+            <field name="name">Invoices: purchase user: cannot view to supplier invoices</field>
             <field name="model_id" ref="account.model_account_invoice"/>
             <field name="domain_force">[('user_id', '=', user.id)]</field> 
             <field name="groups" eval="[(4,ref('purchase.group_purchase_user'))]"/>
+			<!-- at least one has to be true in the followings -->
             <field name="perm_read" eval="False"/>
-            <field name="perm_create" eval="False"/>
+            <field name="perm_create" eval="True"/>
             <field name="perm_write" eval="False"/>
             <field name="perm_unlink" eval="False"/>
         </record>
